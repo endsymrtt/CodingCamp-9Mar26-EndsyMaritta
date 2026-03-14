@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Dashboard</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1 class="dashboard-title">To-Do List Life Dashboard</h1>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <main class="dashboard-main" id="main-content">
+            <!-- Greeting Component -->
+            <section class="greeting-section" aria-labelledby="greeting-title">
+                <div class="greeting-container" id="greeting-container" role="banner">
+                    <div class="greeting-text" id="greeting-text" aria-live="polite">Good morning!</div>
+                    <div class="current-time" id="current-time" aria-live="polite">10:30 AM</div>
+                    <div class="current-date" id="current-date">Monday, March 15, 2024</div>
+                </div>
+            </section>
+
+            <!-- Timer Component -->
+            <section class="timer-section" aria-labelledby="timer-title">
+                <div class="timer-container" id="timer-container">
+                    <h2 id="timer-title" class="sr-only">Pomodoro Timer</h2>
+                    <div class="session-type" id="session-type" aria-live="polite">Focus Session</div>
+                    <div class="timer-display" id="timer-display" aria-live="polite" aria-atomic="true">25:00</div>
+                    <div class="session-selector" role="group" aria-label="Session type selection">
+                        <button class="session-btn" data-session="focus" aria-pressed="false">Focus (25m)</button>
+                        <button class="session-btn" data-session="short-break" aria-pressed="false">Short Break (5m)</button>
+                        <button class="session-btn" data-session="long-break" aria-pressed="false">Long Break (15m)</button>
+                    </div>
+                    <div class="timer-controls" role="group" aria-label="Timer controls">
+                        <button class="timer-btn start-btn" id="start-btn" aria-describedby="timer-display">Start</button>
+                        <button class="timer-btn stop-btn" id="stop-btn" aria-describedby="timer-display">Stop</button>
+                        <button class="timer-btn reset-btn" id="reset-btn" aria-describedby="timer-display">Reset</button>
+                    </div>
+                    <div class="session-progress" id="session-progress" aria-live="polite">Session 1 of 4</div>
+                </div>
+            </section>
+
+            <!-- Task Component -->
+            <section class="task-section" aria-labelledby="task-title">
+                <div class="task-container" id="task-container">
+                    <h2 class="section-title" id="task-title">Tasks</h2>
+                    <div class="task-input-section" role="group" aria-labelledby="task-title">
+                        <label for="task-input" class="sr-only">New task description</label>
+                        <input type="text" class="task-input" id="task-input" placeholder="Add a new task..." maxlength="500" aria-describedby="task-input-help">
+                        <div id="task-input-help" class="sr-only">Enter a task description up to 500 characters</div>
+                        <button class="add-task-btn" id="add-task-btn" aria-describedby="task-input">Add</button>
+                    </div>
+                    <div class="task-list" id="task-list" role="list" aria-live="polite" aria-label="Task list">
+                        <!-- Tasks will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Links Component -->
+            <section class="links-section" aria-labelledby="links-title">
+                <div class="links-container" id="links-container">
+                    <h2 class="section-title" id="links-title">Quick Links</h2>
+                    <div class="links-input-section" role="group" aria-labelledby="links-title">
+                        <label for="link-name-input" class="sr-only">Link name</label>
+                        <input type="text" class="link-name-input" id="link-name-input" placeholder="Link name" maxlength="100" aria-describedby="link-name-help">
+                        <div id="link-name-help" class="sr-only">Enter a display name for the link</div>
+                        <label for="link-url-input" class="sr-only">Link URL</label>
+                        <input type="url" class="link-url-input" id="link-url-input" placeholder="https://example.com" aria-describedby="link-url-help">
+                        <div id="link-url-help" class="sr-only">Enter a valid URL starting with http:// or https://</div>
+                        <button class="add-link-btn" id="add-link-btn" aria-describedby="link-name-input link-url-input">Add</button>
+                    </div>
+                    <div class="links-grid" id="links-grid" role="list" aria-live="polite" aria-label="Quick links">
+                        <!-- Links will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/performance-monitor.js"></script>
+    <script src="js/services/timer-service.js"></script>
+    <script src="js/services/notification-service.js"></script>
+    <script src="js/models/link.js"></script>
+    <script src="js/models/task.js"></script>
+    <script src="js/components/greeting.js"></script>
+    <script src="js/components/timer.js"></script>
+    <script src="js/components/tasks.js"></script>
+    <script src="js/components/links.js"></script>
+    <script src="js/components/theme.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
